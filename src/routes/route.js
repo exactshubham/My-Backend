@@ -70,4 +70,63 @@ router.post("/test-post-4", function(req, res) {
     res.send(  { msg: arr , status: true }  )
 })
 
+//const express = require('express');
+//const router = express.Router();
+ 
+let players =
+   [
+       {
+           "name": "manish",
+           "dob": "1/1/1995",
+           "gender": "male",
+           "city": "jalandhar",
+           "sports": [
+               "swimming"
+           ]
+       },
+       {
+           "name": "gopal",
+           "dob": "1/09/1995",
+           "gender": "male",
+           "city": "delhi",
+           "sports": [
+               "soccer"
+           ],
+       },
+       {
+           "name": "lokesh",
+           "dob": "1/1/1990",
+           "gender": "male",
+           "city": "mumbai",
+           "sports": [
+               "soccer"
+           ],
+       },
+   ]
+ 
+   
+   router.post('/player', function (req, res) {
+   let body = req.body
+    let name = req.body.name
+       for (let index = 0; index < players.length; index++) {
+        const element = players[index];
+        let names = element.name
+        if(name===names){
+            res.send ({status:false,msg:"send me valid name"})
+       }
+    
+       }
+       players.push(body)
+       res.send(  { data: players , status: true }  )})
+  
+//module.exports = router;
+
+
+
+
+
+
+
+
+
 module.exports = router;
