@@ -108,5 +108,34 @@ router.get("/films/:filmId", function(req, res){
        res.send("The film id doesn't match any movie")
 })
 
+router.get('/sol1',function(req, res){
+    const arr= [1,2,3,5,6,7]
+    let n =arr.length+1
+    let sum_of_natural_no=n*(1+7)/2
+    sum_of_arr=0;
+    for (let i=0; i<arr.length; i++){
+      const element= arr[i]
+      sum_of_arr+=element
+    }
+    let result = sum_of_natural_no - sum_of_arr
+    res.send({data:result})
+  })
+
+router.get('/sol2',function(req, res){
+    const arr= [33, 34, 35, 37, 38]
+    n = arr.length+1
+    let sum_of_natural_no=n*(33+38)/2
+    sum_of_arr=0
+    for(i=0;i<arr.length;i++){
+        const element=arr[i]
+        sum_of_arr+=element
+    }
+   let result=sum_of_natural_no - sum_of_arr
+   res.send({data:result})
+})
+
+
+
+
 module.exports = router;
 // adding this comment for no reason
