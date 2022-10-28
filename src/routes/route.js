@@ -14,7 +14,7 @@ router.post("/createUser", UserController.createUser  )
 
 router.get("/getUsersData", UserController.getUsersData)
 
-router.post("/createBook", BookController.createBook  )
+//router.post("/createBook", BookController.createBook  )
 
 router.get("/getBooksData", BookController.getBooksData)
 
@@ -24,7 +24,8 @@ router.get("/getBooksData", BookController.getBooksData)
 
 router.post("/createauthor", authorcontroller.createauthor)
 
-router.post("/createBook", newbookController.createBook)
+router.post("/createnewBook", newbookController.createnewBook)
+
 router.get("/getBooksbyChetanBhagat",newbookController.getBooksbyChetanBhagat)
 router.get("/findauthor", newbookController.findauthor)
 router.get("/getauthorName", newbookController.getauthorName)
