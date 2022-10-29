@@ -17,9 +17,9 @@ const getBooksbyChetanBhagat = async function(req ,res) {
 }
 
 const findauthor = async function(req, res){
-    let data = await newbookModel.findOneAndUpdate({name: "Two States"}, { price : 100 }, {new: true } )
-    
-    let savedData= await authorModel.findOne({_id:Date.author_id}).select({author_name:1, _id:0 })
+    let data = await newbookModel.findOneAndUpdate({name:"Five Point Someone"}, { price : 100 }, {new: true } )
+
+    let savedData= await authorModel.findOne({_id:data.author_id}).select({author_name:1, _id:0 })
     res.send({ msg: savedData, data})
 
 }
