@@ -21,4 +21,6 @@ router.get("/test-me", function (req, res) {
 router.post("/USERS",assUserController.createUSER)
 router.post("/LOGIN",assUserController.loginUSER)
 router.get("/users/:userId", assUserController.getUSERData)
+router.put("/users/:userId", assUserController.updateUSER)
+router.delete("/users/:userId", assUserController.deleteUSER)
 module.exports = router;

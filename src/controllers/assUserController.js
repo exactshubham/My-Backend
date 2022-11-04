@@ -16,7 +16,7 @@ const loginUSER = async function (req, res) {
 
   let user = await assUserModel.findOne({ emailId: emailId, password: password });
   if (!user) return res.send({ status: false, msg: "username or the password is not correct" })
-
+  console.log(user) 
   let token = jwt.sign(
     {
       userId: user._id.toString(),
@@ -55,18 +55,45 @@ const getUSERData = async function (req, res) {
 const updateUSER = async function (req, res) {
   
   let userId = req.params.userId;
-  let user = await userModel.findById(userId);
+  let user = await assUserModel.findById(userId);
+  
+  if (!user) {
+    return res.send("No such user exists");
+  }
+  let token = req.headers["x-Auth-token"];
+  if (!token) token = req.headers["x-auth-token"];
+
+ 
+  if (!token) return res.send({ status: false, msg: "token must be present" });
+
+
+  let userData = req.body;
+  let updatedUser = await assUserModel.findOneAndUpdate({ _id: userId }, userData);
+  res.send({ status: updatedUser, data: updatedUser });
+};
+
+const deleteUSER  = async function (req, res) {
+  let userId = req.params.userId;
+  let user = await assUserModel.findById(userId);
   
   if (!user) {
     return res.send("No such user exists");
   }
 
-  let userData = req.body;
-  let updatedUser = await userModel.findOneAndUpdate({ _id: userId }, userData);
-  res.send({ status: updatedUser, data: updatedUser });
-};
+  let token = req.headers["x-Auth-token"];
+  if (!token) token = req.headers["x-auth-token"];
+
+  if (!token) return res.send({ status: false, msg: "token must be present" });
+
+
+  let deleteData= req.body;
+  let deleteUser= await assUserModel.findOneAndUpdate({_id: userId}, {isDeleted:true} , deleteData);
+  res.send({ status: deleteUser, data:deleteUser})
+}
+
 
 module.exports.createUSER = createUSER;
 module.exports.getUSERData = getUSERData;
 module.exports.updateUSER = updateUSER;
 module.exports.loginUSER = loginUSER;
+module.exports.deleteUSER = deleteUSER
