@@ -10,7 +10,7 @@ const USERSchema= new mongoose.Schema({
     password : String,
     gender : {
         type: String,
-        enum: ["male", "female", "other"]
+        enum: ["male", "female", "LGBTQ"]
     } ,
 	isDeleted: {type:Boolean,
                  default: false  },

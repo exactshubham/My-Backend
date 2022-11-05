@@ -69,7 +69,7 @@ const updateUSER = async function (req, res) {
 
   let userData = req.body;
   let updatedUser = await assUserModel.findOneAndUpdate({ _id: userId }, userData);
-  res.send({ status: updatedUser, data: updatedUser });
+  res.send({ status: updatedUser, data: updatedUser, new:true });
 };
 
 const deleteUSER  = async function (req, res) {
@@ -88,7 +88,7 @@ const deleteUSER  = async function (req, res) {
 
   let deleteData= req.body;
   let deleteUser= await assUserModel.findOneAndUpdate({_id: userId}, {isDeleted:true} , deleteData);
-  res.send({ status: deleteUser, data:deleteUser})
+  res.send({ status: deleteUser, data:deleteUser, new: true})
 }
 
 
