@@ -13,4 +13,4 @@ const USERSchema= new mongoose.Schema({
     age : Number,
 },{timestamps: true})
 
-module.exports=mongoose.model(USER, USERSchema)
+module.exports=mongoose.model('USER', USERSchema)

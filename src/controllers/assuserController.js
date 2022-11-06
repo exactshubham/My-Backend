@@ -22,10 +22,10 @@ const createUser = async function (abcd, xyz) {
     let token = jwt.sign(
       {
         userId: user._id.toString(),
-        batch: "thorium",
+        batch: "Lithium",
         organisation: "FUnctionUp",
       },
-      "functionup-thorium"
+      "functionup-Lithium"
     );
     res.setHeader("x-auth-token", token);
     res.send({ status: true, data: token });
@@ -63,7 +63,7 @@ const createUser = async function (abcd, xyz) {
   
     let userData = req.body;
     let updatedUser = await assuserModel.findOneAndUpdate({ _id: userId }, userData);
-    res.send({ status: updatedUser, data: updatedUser });
+    res.send({ status: true, data: updatedUser, new :true });
   };
 
   const deleteUser = async function(req, res){
@@ -81,7 +81,7 @@ const createUser = async function (abcd, xyz) {
       
    
     let updatedUser = await assuserModel.findOneAndUpdate({ _id: userId }, {$set :{isDeleted: true}});
-    res.send({ status: true , data: updatedUser });
+    res.send({ status: true , data: updatedUser, new :true });
   
   }
   
