@@ -5,6 +5,9 @@ const assuserModel=require("../models/assuserModel")
 const authenticate = async function(req, res, next) {
     let userId = req.params.userId;
     let user = await assuserModel.findById(userId);
+    if(!userId) {
+      return res.send("userId is Required")
+    };
 
     if (!user) {
         return res.send("No such user exists")

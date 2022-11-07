@@ -9,8 +9,8 @@ const createUser = async function (abcd, xyz) {
   };
   
   const loginUser = async function (req, res) {
-    let userName = req.body.emailId;
-    let password = req.body.password;
+    let userName = req.body.emailId;    //let {username,password} = req.body
+    let password = req.body.password;   //
   
     let user = await assuserModel.findOne({ emailId: userName, password: password });
     if (!user)
