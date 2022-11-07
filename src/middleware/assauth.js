@@ -3,10 +3,10 @@ const assuserModel=require("../models/assuserModel")
 
 
 const authenticate = async function(req, res, next) {
-    let userId = req.params.userId;
+   try{ let userId = req.params.userId;
     let user = await assuserModel.findById(userId);
     if(!userId) {
-      return res.send("userId is Required")
+      return res.status(400).send("userId is Required")
     };
 
     if (!user) {
@@ -25,6 +25,8 @@ const authenticate = async function(req, res, next) {
     //validate this token
 
     next()
-}
+}catch(error){
+  return res.status(401).send({status:false, message : error.message || "Invalid auth Token"})
+}}
 
 module.exports.authenticate=authenticate
