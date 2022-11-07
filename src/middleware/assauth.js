@@ -18,13 +18,19 @@ const authenticate = async function(req, res, next) {
     
       if (!token) return res.send({ status: false, msg: "token must be present" });
      
-    let decodedToken = jwt.verify(token, "functionup-Lithium");
-    if (!decodedToken)
-      return res.send({ status: false, msg: "token is invalid" });
+    let decodedToken = jwt.verify(token, "functionup-Lithium",function(error){
+      if(error){
+        res.status(400).send({status: false, msg : "token is invalid"})
+      }else{
+       next() 
+      }
+    });
+    // if (!decodedToken)
+    //   return res.send({ status: false, msg: "token is invalid" });
     //check the token in request header
     //validate this token
 
-    next()
+    
 }catch(error){
   return res.status(401).send({status:false, message : error.message || "Invalid auth Token"})
 }}
