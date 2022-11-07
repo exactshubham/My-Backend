@@ -42,3 +42,9 @@ If present, check that the token is valid.
 
 ``` 
 
+
+//Assignment - 
+//Implement Try Catch and status codes in the previous assignment on JWT (authentication and authorization)
+
+
+
