@@ -13,6 +13,7 @@ const createUser = async function (abcd, xyz) {
 };
   
   const loginUser = async function (req, res) {
+   try{
     let userName = req.body.emailId;    //let {username,password} = req.body
     let password = req.body.password;   //
   
@@ -33,14 +34,16 @@ const createUser = async function (abcd, xyz) {
     );
     res.setHeader("x-auth-token", token);
     res.status(200).send({ status: true, data: token });
-  };
+  }catch(error){
+    res.status(500).send({status: false, error: error.message})
+  }}
   
   const getUserData = async function (req, res) {
     try{
     let token = req.headers["x-Auth-token"];
     if (!token) token = req.headers["x-auth-token"];
   
-    if (!token) return res.status(401).send({ status: false, msg: "token must be present" });
+    if (!token) return res.status(400).send({ status: false, msg: "token must be present" });
   
     console.log(token);
    
